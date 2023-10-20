@@ -58,4 +58,59 @@
       <td>K</td>
       <td>Y</td>
     </tr>
-   
+    <tr>
+      <td></td>
+      <td id="c6" contenteditable="true"></td>
+      <td id="c7" contenteditable="true"></td>
+      <td id="c8" contenteditable="true"></td>
+      <td id="c9" contenteditable="true"></td>
+      <td id="c10" contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td id="r3" contenteditable="true"></td>
+      <td id="r4" contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td id="r5" contenteditable="true"></td>
+      <td id="r6" contenteditable="true"></td>
+    </tr>
+  </table>
+
+  <script>
+    function checkSolution() {
+      const solution = {
+        c1: 'T', c2: 'Y', c3: 'L', c4: 'E', c5: 'R',
+        r1: 'B', r2: 'U', r3: 'G', r4: 'S', r5: 'O', r6: 'N',
+        c6: 'O', c7: 'V', c8: 'E', c9: 'R', c10: 'G'
+      };
+
+      let isCorrect = true;
+
+      for (const id in solution) {
+        const cell = document.getElementById(id);
+        const userValue = cell.textContent.trim().toUpperCase();
+
+        if (userValue !== solution[id]) {
+          isCorrect = false;
+          break;
+        }
+      }
+
+      if (isCorrect) {
+        alert('Congratulations! You solved the crossword puzzle!');
+      } else {
+        alert('Sorry, not all letters are correct. Try again!');
+      }
+    }
+  </script>
+
+  <button onclick="checkSolution()">Check Solution</button>
+
+</body>
+</html>
