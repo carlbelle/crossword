@@ -27,6 +27,10 @@
       text-align: center;
       font-size: 14px;
     }
+
+    .blocked {
+      background-color: black;
+    }
   </style>
   <title>Crossword Puzzle</title>
 </head>
@@ -36,49 +40,71 @@
 
   <table id="crossword">
     <tr>
-      <td></td>
+      <td class="blocked"></td>
+      <td class="blocked"></td>
       <td id="c1" contenteditable="true"></td>
       <td id="c2" contenteditable="true"></td>
       <td id="c3" contenteditable="true"></td>
       <td id="c4" contenteditable="true"></td>
       <td id="c5" contenteditable="true"></td>
+      <td id="c6" contenteditable="true"></td>
+      <td class="blocked"></td>
+      <td class="blocked"></td>
     </tr>
     <tr>
       <td id="r1" contenteditable="true"></td>
-      <td>R</td>
-      <td>U</td>
-      <td>G</td>
-    </tr>
-    <tr>
       <td id="r2" contenteditable="true"></td>
-      <td>S</td>
-      <td>T</td>
-      <td>I</td>
-      <td>N</td>
-      <td>K</td>
-      <td>Y</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td id="c6" contenteditable="true"></td>
+      <td>R</td>
       <td id="c7" contenteditable="true"></td>
+      <td></td>
       <td id="c8" contenteditable="true"></td>
       <td id="c9" contenteditable="true"></td>
-      <td id="c10" contenteditable="true"></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
       <td id="r3" contenteditable="true"></td>
       <td id="r4" contenteditable="true"></td>
     </tr>
     <tr>
-      <td></td>
-      <td></td>
-      <td></td>
       <td id="r5" contenteditable="true"></td>
       <td id="r6" contenteditable="true"></td>
+      <td>S</td>
+      <td id="c10" contenteditable="true"></td>
+      <td></td>
+      <td id="c11" contenteditable="true"></td>
+      <td id="c12" contenteditable="true"></td>
+      <td id="r7" contenteditable="true"></td>
+      <td id="r8" contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td id="r9" contenteditable="true"></td>
+      <td id="c13" contenteditable="true"></td>
+      <td>O</td>
+      <td id="c14" contenteditable="true"></td>
+      <td></td>
+      <td id="c15" contenteditable="true"></td>
+      <td id="c16" contenteditable="true"></td>
+      <td id="r10" contenteditable="true"></td>
+      <td id="r11" contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td id="r12" contenteditable="true"></td>
+      <td id="c17" contenteditable="true"></td>
+      <td></td>
+      <td id="c18" contenteditable="true"></td>
+      <td id="c19" contenteditable="true"></td>
+      <td id="c20" contenteditable="true"></td>
+      <td id="c21" contenteditable="true"></td>
+      <td id="r13" contenteditable="true"></td>
+      <td id="r14" contenteditable="true"></td>
+    </tr>
+    <tr>
+      <td id="r15" contenteditable="true"></td>
+      <td id="c22" contenteditable="true"></td>
+      <td></td>
+      <td id="c23" contenteditable="true"></td>
+      <td id="c24" contenteditable="true"></td>
+      <td id="c25" contenteditable="true"></td>
+      <td id="c26" contenteditable="true"></td>
+      <td id="r16" contenteditable="true"></td>
+      <td id="r17" contenteditable="true"></td>
     </tr>
   </table>
 
@@ -86,8 +112,14 @@
     function checkSolution() {
       const solution = {
         c1: 'T', c2: 'Y', c3: 'L', c4: 'E', c5: 'R',
-        r1: 'B', r2: 'U', r3: 'G', r4: 'S', r5: 'O', r6: 'N',
-        c6: 'O', c7: 'V', c8: 'E', c9: 'R', c10: 'G'
+        r1: 'B', r2: 'U', r3: 'G', r4: 'P', r5: 'O', r6: 'N',
+        r7: 'S', r8: 'T', r9: 'O', r10: 'O',
+        r11: 'P', r12: 'E', r13: 'E', r14: 'P', r15: 'E',
+        r16: 'P', r17: 'Y', c6: 'O', c7: 'V', c8: 'E', c9: 'R', c10: 'G',
+        r15: 'M', r14: 'A', r13: 'X', c11: 'P', c12: 'A', c13: 'P', c14: 'P', c15: 'Y', c16: 'P', c17: 'E',
+        r12: 'M', r22: 'A', r32: 'X', c18: 'P', c19: 'A', c20: 'P', c21: 'P', c22: 'Y', c23: 'P', c24: 'E',
+        r25: 'P', r26: 'E', r27: 'E', c25: 'P', c26: 'A', c27: 'P', c28: 'P', c29: 'Y', c30: 'P', c31: 'E',
+        r36: 'P', r37: 'A', r38: 'P', c32: 'P', c33: 'E', c34: 'E', c35: 'P', c36: 'Y', c37: 'E', c38: 'E'
       };
 
       let isCorrect = true;
@@ -96,7 +128,7 @@
         const cell = document.getElementById(id);
         const userValue = cell.textContent.trim().toUpperCase();
 
-        if (userValue !== solution[id]) {
+        if (userValue !== solution[id] && !cell.classList.contains('blocked')) {
           isCorrect = false;
           break;
         }
@@ -105,12 +137,4 @@
       if (isCorrect) {
         alert('Congratulations! You solved the crossword puzzle!');
       } else {
-        alert('Sorry, not all letters are correct. Try again!');
-      }
-    }
-  </script>
-
-  <button onclick="checkSolution()">Check Solution</button>
-
-</body>
-</html>
+        alert('Sorry, not
