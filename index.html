@@ -16,6 +16,16 @@
     th, td {
       padding: 10px;
       text-align: center;
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+    }
+
+    input {
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      font-size: 14px;
     }
   </style>
   <title>Crossword Puzzle</title>
@@ -24,21 +34,23 @@
 
   <h1>Crossword Puzzle</h1>
 
-  <table>
+  <table id="crossword">
     <tr>
       <td></td>
-      <td>T</td>
-      <td>Y</td>
-      <td>L</td>
-      <td>E</td>
-      <td>R</td>
+      <td id="c1" contenteditable="true"></td>
+      <td id="c2" contenteditable="true"></td>
+      <td id="c3" contenteditable="true"></td>
+      <td id="c4" contenteditable="true"></td>
+      <td id="c5" contenteditable="true"></td>
     </tr>
     <tr>
-      <td>B</td>
+      <td id="r1" contenteditable="true"></td>
+      <td>R</td>
       <td>U</td>
       <td>G</td>
     </tr>
     <tr>
+      <td id="r2" contenteditable="true"></td>
       <td>S</td>
       <td>T</td>
       <td>I</td>
@@ -46,36 +58,4 @@
       <td>K</td>
       <td>Y</td>
     </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td>O</td>
-      <td>V</td>
-      <td>E</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>G</td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td>E</td>
-      <td>R</td>
-    </tr>
-  </table>
-
-  <p><strong>Across:</strong></p>
-  <p>1. Tyler</p>
-  <p>3. Stinky</p>
-  <p>4. Love</p>
-
-  <p><strong>Down:</strong></p>
-  <p>1. Bug</p>
-  <p>2. Booger</p>
-
-</body>
-</html>
+   
